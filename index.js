@@ -12,6 +12,6 @@ app.listen(port,function(err){
     if(err){
         console.log(`error in connecto to port : ${err}`);
     }else{
-        console.log(`The server is up and running on port : ${err}`);
+        console.log(`The server is up and running on port : ${port}`);
     }
 });
