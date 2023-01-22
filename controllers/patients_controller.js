@@ -27,15 +27,27 @@ module.exports.createReport = async function(req,res){
 
 module.exports.allReports = async function(req,res){
     try{
-        let reports = await Report.find({ patient: req.params.id});
-        return res.status(200).json({
-            message:"reports of patient",
-            reports:reports
-        })
+        let pat_id = req.params.id;
+        let patient = Patient.findById(pat_id);
+        let reports = await Report.find({ patient: pat_id});
+        console.log(reports);
+       if(reports){ 
+          return res.status(200).json({
+              message:"reports of patient",
+              reports:reports
+          })
+        }
+        else{
+            return res.status(200).json({
+                message:"no reports recreated yet",
+                reports:reports
+            })
+        } 
     }
     catch(err){
        return res.status(401).json({
-        message:"Internal Server Error"
+        message:"Internal Server Error",
+        reports:[]
        })
     }
 }

@@ -1,13 +1,12 @@
 const Doctor = require('../models/doctor');
 const jwt= require('jsonwebtoken');
-const { hasUncaughtExceptionCaptureCallback } = require('process');
-const { domainToASCII } = require('url');
 
 //register a new doctor if he/she not present
 module.exports.create = async function(req,res){
     console.log(req.body);
     try{
-        let doctor = await Doctor.findOne({ email: req.body.email});
+        console.log(req.body.email);
+        let doctor = await Doctor.findOne({email:req.body.email});
 
         // if doctor exists the render the login page
         if(doctor){
@@ -51,7 +50,7 @@ module.exports.createSession = async function(req,res){
         return res.status(200).json({
             message:'loged in successfully',
             data:{
-                token: jwt.sign(docotor.toJSON(),'secret', { expiresIn:'2000000'})
+                token: jwt.sign(doctor.toJSON(),'secret', { expiresIn:'2000000'})
             }
         })
     }

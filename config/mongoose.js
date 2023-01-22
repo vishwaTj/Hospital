@@ -1,8 +1,9 @@
-const mongooose = require('mongoose');
+const mongoose = require('mongoose');
+mongoose.set('strictQuery', false);
 
-mongooose.connect('mongodb://localhost/Hospital_API');
+mongoose.connect('mongodb://localhost/Hospital_API');
 
-const db = mongooose.connection;
+const db = mongoose.connection;
 
 db.on('error', console.error.bind(console, "Error connecting to DB"));
 

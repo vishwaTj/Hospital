@@ -1,6 +1,10 @@
 const express = require('express');
 const app = express();
 const port = 300;
+const db = require('./config/mongoose');
+const passport = require('passport');
+const passportJWT = require('./config/passport-jwt-strategy');
+
 
 app.use(
     express.urlencoded({extended:true})
