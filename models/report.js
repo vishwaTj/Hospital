@@ -6,10 +6,6 @@ const ReportSchema = mongoose.Schema({
         type : String,
         required : true,
     },
-    date : {
-        type : String,
-        required : true,
-    },
     patient : {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Patient',
