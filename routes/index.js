@@ -2,7 +2,9 @@ const express = require('express');
 
 const router = express.Router();
 
-router.use('/authFailed',require('./authFailed'));
+// router.use('/authFailed',require('../controllers/authFailed').authFailed);
+
+router.use('/authfailed',require('./authFailed'));
 
 //route doctor funtionalities
 router.use('/doctor',require('./doctor'));
@@ -14,3 +16,4 @@ router.use('/patient',require('./patient'));
 router.use('/report',require('./report'));
 
 module.exports=router;
+

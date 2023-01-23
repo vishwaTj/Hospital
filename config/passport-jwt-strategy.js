@@ -9,7 +9,7 @@ const ExtractJwt = require('passport-jwt').ExtractJwt;
 
 let opt = { 
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(), 
-    secretOrKey: 'Hospital_API'
+    secretOrKey: 'EncryptionKey'
 };
 //object created to be passed in jwt strategy
 

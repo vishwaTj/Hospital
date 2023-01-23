@@ -9,11 +9,11 @@ const PatientController = require('../controllers/Patient_controller');
 const ReportContorller = require('../controllers/Reports_controller');
 
 // register a patient
-router.post('/register', passport.authenticate('jwt', { session: false, failureRedirect: '/authFailed' }),PatientController.patientRegister);
+router.post('/register', passport.authenticate('jwt', { session: false, failureRedirect: '/authfailed' }),PatientController.patientRegister);
 
 
 // register a new patient
-router.post('/:id/create_report',passport.authenticate('jwt',{session : false, failureRedirect : '/authFailed'}),ReportContorller.createReport);
+router.post('/:id/create_report',passport.authenticate('jwt',{session : false,failureRedirect : '/authFailed'}),ReportContorller.createReport);
 
 
 //fetch all reports of a patient

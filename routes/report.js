@@ -8,6 +8,6 @@ const ReportsController = require('../controllers/Reports_controller');
 
 
 // route to fetch status specific reports
-router.get('/:status', passport.authenticate('jwt', { session: false, failureRedirect: '/api/v1/authFailed'}), ReportsController.statusVise);
+router.get('/:status', passport.authenticate('jwt', { session: false, failureRedirect: '/authFailed'}), ReportsController.statusVise);
 
 module.exports = router;
