@@ -1,9 +1,24 @@
 const express = require('express');
+
 const router = express.Router();
-const patientController = require('../controllers/patients_controller');
+
 const passport = require('passport');
 
-router.post('/register', passport.authenticate('jwt', {session:false}), patientController.createReport);
-router.get('/:id/all_reports',passport.authenticate('jwt',{session:false}), patientController.allReports);
+const PatientController = require('../controllers/Patient_controller');
 
-module.exports = router;
+const ReportContorller = require('../controllers/Reports_controller');
+
+// register a patient
+router.post('/register', passport.authenticate('jwt', { session: false, failureRedirect: '/authFailed' }),PatientController.patientRegister);
+
+
+// register a new patient
+router.post('/:id/create_report',passport.authenticate('jwt',{session : false, failureRedirect : '/authFailed'}),ReportContorller.createReport);
+
+
+//fetch all reports of a patient
+router.get('/:id/all_reports', passport.authenticate('jwt', { session: false, failureRedirect: '/authFailed'}),ReportContorller.allReports);
+
+
+
+module.exports=router;

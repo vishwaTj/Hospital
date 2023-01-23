@@ -1,24 +1,21 @@
 const mongoose = require('mongoose');
 
-const doctorSchema = new mongoose.Schema({
-    name:{
-        type:String,
-        required:true
+const DoctorSchema  = mongoose.Schema({
+    email: {
+        type : String,
+        required : true,
     },
-    email:{
-        type:String,
-        required:true,
-        unique:true
+    password : {
+        type : String ,
+        required : true,
     },
-    password:{
-        type:String,
-        required:true
-    },
-   },
-   {
-    timestamps:true
-   }
+    name : {
+        type : String,
+        required : true,
+    }
+});
 
-);
-const Doctor = mongoose.model('Doctor',doctorSchema);
+const Doctor = mongoose.model('DoctorDetails',DoctorSchema);
+
+
 module.exports = Doctor;

@@ -1,9 +1,13 @@
 const express = require('express');
-const router = express.Router();
+
 const passport = require('passport');
 
-const reportController = require('../controllers/reports_controller');
+const router = express.Router();
 
-router.post('/:id/newReport', passport.authenticate('jwt',{ session: false}), reportController.create);
+const ReportsController = require('../controllers/Reports_controller');
+
+
+// route to fetch status specific reports
+router.get('/:status', passport.authenticate('jwt', { session: false, failureRedirect: '/api/v1/authFailed'}), ReportsController.statusVise);
 
 module.exports = router;

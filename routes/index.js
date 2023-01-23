@@ -1,16 +1,16 @@
 const express = require('express');
+
 const router = express.Router();
-const HomeController = require('../controllers/homecontroller');
 
-router.get('/',HomeController.home);
+router.use('/authFailed',require('./authFailed'));
 
-//handle all doctors functionalities
-router.use('/doctors',require('./doctor'));
+//route doctor funtionalities
+router.use('/doctor',require('./doctor'));
 
-//handle patients functionalities
-router.use('/patients', require('./patient'));
+//router to patient functionalities
+router.use('/patient',require('./patient'));
 
-//handle reports functionalities
+//router to report functionalities
 router.use('/report',require('./report'));
 
-module.exports = router;
+module.exports=router;

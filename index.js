@@ -1,21 +1,34 @@
 const express = require('express');
-const app = express();
-const port = 300;
+
+const passport = require('./config/passport-jwt-Strategy');
+
+// connect to the DB creted
 const db = require('./config/mongoose');
-const passport = require('passport');
-const passportJWT = require('./config/passport-jwt-strategy');
 
+//port number
+const port = 300;
 
-app.use(
-    express.urlencoded({extended:true})
-);
+const app = express();
 
+//middleware to read the form data
+app.use(express.urlencoded());
+
+//middleware to decode the json data
+app.use(express.json());
+
+//initialized passport
+app.use(passport.initialize());
+
+// connect to main route
 app.use('/',require('./routes/index'));
+
 
 app.listen(port,function(err){
     if(err){
-        console.log(`error in connecto to port : ${err}`);
-    }else{
-        console.log(`The server is up and running on port : ${port}`);
+        console.log(`Error in connecting to port : ${err}`);
     }
+    else{
+        console.log(`Connect to port: ${port}`);
+    }
+
 });
